@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="zip">
+
+	<!-- 定义目录属性 -->
+	<property name="config.dir" location="src/main/resources" />
+	<property name="target.dir" location="target" />
+
+	<property name="build.dir" location="build" />
+	<property name="build.app.dir" location="${build.dir}/app" />
+	<property name="build.lib.dir" location="${build.dir}/lib" />
+	<property name="build.conf.dir" location="${build.dir}/conf" />
+
+	<!-- 清除build目录 -->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<!-- 初始化build目录 -->
+	<target name="init" depends="clean">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.app.dir}" />
+		<mkdir dir="${build.conf.dir}" />
+		<mkdir dir="${build.lib.dir}" />
+	</target>
+
+	<!-- 复制应用jar到指定目录 -->
+	<target name="copy-app" depends="init">
+		<copy todir="${build.app.dir}">
+			<fileset dir="${target.dir}">
+				<include name="**/wngn-pdf*.jar" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- 复制应用引用jar到指定目录 -->
+	<target name="copy-lib" depends="copy-app">
+		<copy todir="${build.lib.dir}">
+			<fileset dir="${target.dir}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- 复制应用配置文件到指定目录 -->
+	<target name="copy-conf" depends="copy-lib">
+		<copy todir="${build.conf.dir}">
+			<fileset dir="${config.dir}">
+				<include name="**/**" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- 复制应用执行脚本到指定目录 -->
+	<target name="copy-script" depends="copy-conf">
+		<copy todir="${build.dir}">
+			<fileset dir="${config.dir}/script" includes="**/*.bat">
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- 打包应用成zip文件 -->
+	<target name="zip" depends="copy-script">
+		<zip destfile="${build.dir}/pdf.zip" duplicate="preserve">
+			<zipfileset file="${build.dir}/start.bat" prefix="" />
+			<zipfileset dir="${build.app.dir}" includes="**/*.*" prefix="app" />
+			<zipfileset dir="${build.conf.dir}" includes="**/*" prefix="conf" />
+			<zipfileset dir="${build.lib.dir}" includes="**/*.*" prefix="lib" />
+		</zip>
+	</target>
+</project>
