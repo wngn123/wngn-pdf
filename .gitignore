@@ -1,12 +1,35 @@
-*.class
+#################     java project ignore file settings     ######################
+#################  Based on the eclipse or idea development ######################
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+#忽略gitignore文件
+.gitignore
 
-# Package Files #
-*.jar
-*.war
-*.ear
+#eclipse 忽略的文件
+#忽略bin目录下的文件
+/bin/
+#忽略.settings目录下的文件
+/.settings/
+#忽略.classpath文件
+.classpath
+#忽略.project文件
+.project
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+#intellij IDEA 忽略的文件
+#忽略.idea目录下的文件
+/.idea/
+#忽略out目录下的文件
+/out/
+#忽略.iml文件
+*.iml
+
+#maven 忽略的文件
+#忽略target目录下的文件
+/target/
+
+#svn 忽略的文件
+#忽略.svn目录下的文件
+/.svn/
+
+#ant 忽略的文件
+#忽略build目录下的文件
+/build/
