@@ -5,33 +5,48 @@
 > 解决PDF书籍中没有书签或者书签为页码以及书签打开页面比例没有全屏等问题
 
 #### 没有书签
+
 ![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161204/20161204_01.png "PDF没有书签")
 
 #### 书签为页码
+
 ![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161204/20161204_02.png "PDF书签为页码")
 
 #### 书签打开页面比例没有全屏
+
 ![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161204/20161204_03.png "PDF书签打开页面比例没有全屏")
 
 
 #### 最终效果
+
 ![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161204/20161204_04.png "PDF书签打开页面最终效果")
 
 
 ## 软件介绍
 
-#### 启动页面
-![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161204/20161204_07.png "启动页面")
+#### 软件结构
+
+![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161210/20161210_06.png "软件结构")
 
 #### 软件页面
-![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161204/20161204_08.png "软页面")
+
+![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161210/20161210_01.png "软件页面")
+
+#### 格式化书签页面
+
+![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161210/20161210_02.png "格式化书签页面")
 
 #### 文本生成书签页面
-![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161204/20161204_05.png "文本生成书签页面")
+
+![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161210/20161210_03.png "文本生成书签页面")
 
 #### 页码生成书签页面
-![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161204/20161204_06.png "页码生成书签页面")
 
+![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161210/20161210_04.png "页码生成书签页面")
+
+#### 设置页面
+
+![Github](https://raw.githubusercontent.com/wngn123/resources/master/src/project/md/20161210/20161210_05.png "页码生成书签页面")
 
 ## 软件操作
 
