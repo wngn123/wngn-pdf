@@ -2,18 +2,34 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zzia.wngn</groupId>
+    <groupId>com.wngn</groupId>
     <artifactId>wngn-pdf</artifactId>
-    <version>2.0.0</version>
+    <version>3.0.0</version>
     <packaging>jar</packaging>
 
     <name>wngn-pdf</name>
     <url>http://maven.apache.org</url>
 
     <properties>
+        <junit.version>4.12</junit.version>
+        <springside.version>4.2.2.GA</springside.version>
+        <spring.version>4.1.7.RELEASE</spring.version>
+        <dbcp.version>1.4</dbcp.version>
+        <mysql.version>5.1.38</mysql.version>
+        <fastjson.version>1.2.4</fastjson.version>
+        <quartz.version>2.2.1</quartz.version>
+        <c3p0.version>0.9.5.1</c3p0.version>
+        <!-- Plugin的属性定义 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    <repositories>
+        <repository>
+            <id>maven-repo</id>
+            <url>https://raw.githubusercontent.com/wngn123/maven-repo/master/</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -21,6 +37,26 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!-- JSON begin -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <!-- JSON end -->
+        <!-- Logs start -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <!-- Logs end -->
+        <!-- itextpdf start -->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
@@ -31,6 +67,7 @@
             <artifactId>itext-asian</artifactId>
             <version>5.2.0</version>
         </dependency>
+        <!-- itextpdf end -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
@@ -42,14 +79,14 @@
             <version>1.54</version>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.7</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
         </dependency>
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
+            <groupId>com.wngn</groupId>
+            <artifactId>wngn-common</artifactId>
+            <version>3.0.2</version>
         </dependency>
     </dependencies>
     <build>
@@ -82,16 +119,7 @@
                 </dependencies>
 
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <!-- <configuration> <archive> <manifest> <addClasspath>true</addClasspath> <classpathPrefix>lib/</classpathPrefix> 
-                    <mainClass>com.abc.ABCTest</mainClass> </manifest> </archive> </configuration> -->
-            </plugin>
-            <!-- <plugin> <artifactId>maven-assembly-plugin</artifactId> <configuration> <descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
-                </descriptorRefs> <archive> <manifest> <addClasspath>true</addClasspath> <classpathPrefix>lib/</classpathPrefix> <mainClass>com.zzia.wngn.pdf.ui.UIMain</mainClass> 
-                </manifest> </archive> </configuration> <executions> <execution> <id>make-assembly</id> <phase>package</phase> <goals> <goal>single</goal> 
-                </goals> </execution> </executions> </plugin> -->
+
             <!-- package的时候，单独打出source包出来，deploy的时候能够一同提交到库中 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

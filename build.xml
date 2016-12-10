@@ -6,9 +6,11 @@
 	<property name="target.dir" location="target" />
 
 	<property name="build.dir" location="build" />
-	<property name="build.app.dir" location="${build.dir}/app" />
-	<property name="build.lib.dir" location="${build.dir}/lib" />
-	<property name="build.conf.dir" location="${build.dir}/conf" />
+	<property name="build.pdf.dir" location="${build.dir}/wngn-pdf" />
+	<property name="build.app.dir" location="${build.pdf.dir}/app" />
+	<property name="build.lib.dir" location="${build.pdf.dir}/lib" />
+	<property name="build.conf.dir" location="${build.pdf.dir}/conf" />
+	<property name="build.logs.dir" location="${build.pdf.dir}/logs" />
 
 	<!-- 清除build目录 -->
 	<target name="clean">
@@ -18,9 +20,11 @@
 	<!-- 初始化build目录 -->
 	<target name="init" depends="clean">
 		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.pdf.dir}" />
 		<mkdir dir="${build.app.dir}" />
-		<mkdir dir="${build.conf.dir}" />
 		<mkdir dir="${build.lib.dir}" />
+		<mkdir dir="${build.conf.dir}" />
+		<mkdir dir="${build.logs.dir}" />
 	</target>
 
 	<!-- 复制应用jar到指定目录 -->
@@ -45,26 +49,24 @@
 	<target name="copy-conf" depends="copy-lib">
 		<copy todir="${build.conf.dir}">
 			<fileset dir="${config.dir}">
-				<include name="**/**" />
+				<include name="**/*.xml" />
 			</fileset>
 		</copy>
 	</target>
 
 	<!-- 复制应用执行脚本到指定目录 -->
 	<target name="copy-script" depends="copy-conf">
-		<copy todir="${build.dir}">
-			<fileset dir="${config.dir}/script" includes="**/*.bat">
+		<copy todir="${build.pdf.dir}">
+			<fileset dir="${config.dir}/script">
+				<include name="**/**" />
 			</fileset>
 		</copy>
 	</target>
 
 	<!-- 打包应用成zip文件 -->
 	<target name="zip" depends="copy-script">
-		<zip destfile="${build.dir}/pdf.zip" duplicate="preserve">
-			<zipfileset file="${build.dir}/start.bat" prefix="" />
-			<zipfileset dir="${build.app.dir}" includes="**/*.*" prefix="app" />
-			<zipfileset dir="${build.conf.dir}" includes="**/*" prefix="conf" />
-			<zipfileset dir="${build.lib.dir}" includes="**/*.*" prefix="lib" />
+		<zip destfile="${build.dir}/wngn-pdf-3.0.0.zip" duplicate="preserve">
+			<zipfileset file="${build.pdf.dir}" includes="**/**" prefix="" />
 		</zip>
 	</target>
 </project>
